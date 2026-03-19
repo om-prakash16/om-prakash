@@ -1,26 +1,192 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #080810;
+  --foreground: #f0f0f0;
+  --neon-cyan: #00e5ff;
+  --neon-purple: #8b5cf6;
+  --surface-light: #f4f4f0;
+  --surface-card: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --color-neon-cyan: var(--neon-cyan);
+  --color-neon-purple: var(--neon-purple);
+  --color-cyber-dark: #080810;
+  --color-surface-light: #f4f4f0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: auto;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================
+   GLASS UTILITIES
+   ============================ */
+@utility glass {
+  backdrop-filter: blur(24px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@utility glass-card {
+  @apply glass rounded-3xl shadow-2xl;
+}
+
+/* ============================
+   NEON UTILITIES
+   ============================ */
+@utility neon-border {
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.15), inset 0 0 20px rgba(0, 229, 255, 0.05);
+}
+
+@utility neon-text-cyan {
+  color: var(--neon-cyan);
+  filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.7));
+}
+
+@utility neon-text-purple {
+  color: var(--neon-purple);
+  filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.7));
+}
+
+/* ============================
+   GRADIENT TEXT
+   ============================ */
+@utility text-gradient {
+  background: linear-gradient(135deg, #00e5ff 0%, #ffffff 50%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================
+   ANIMATIONS
+   ============================ */
+@utility animate-pulse-glow {
+  animation: pulse-glow 5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.08); }
+}
+
+/* ============================
+   NAV
+   ============================ */
+@utility nav-glow {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 1px 20px rgba(0, 229, 255, 0.04);
+}
+
+/* ============================
+   LENIS SCROLL
+   ============================ */
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-scrolling iframe { pointer-events: none; }
+
+/* ============================
+   PREMIUM SCROLLBAR
+   ============================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #080810; }
+::-webkit-scrollbar-thumb {
+  background: #1e1e2e;
+  border-radius: 99px;
+  border: 1px solid #080810;
+  transition: background 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--neon-cyan); }
+
+/* ============================
+   SECTION BASE
+   ============================ */
+.section-base {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-inner {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+}
+
+@media (min-width: 768px) {
+  .section-inner { padding: 6rem 3rem; }
+}
+
+@media (min-width: 1024px) {
+  .section-inner { padding: 6rem 6rem; }
+}
+
+/* ============================
+   TYPOGRAPHY SYSTEM
+   ============================ */
+.heading-xl {
+  font-size: clamp(3.5rem, 10vw, 9rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.88;
+}
+
+.heading-lg {
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+}
+
+.heading-md {
+  font-size: clamp(1.75rem, 3vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.body-lg {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 500;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+}
+
+.label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+/* ============================
+   CARD HOVER LIFT
+   ============================ */
+.card-lift {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
 }
