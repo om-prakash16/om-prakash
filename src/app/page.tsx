@@ -8,6 +8,7 @@ import Showcase from '@/components/sections/Showcase'
 import Navbar from '@/components/ui/Navbar'
 import Footer from '@/components/sections/Footer'
 
+// Vercel build trigger
 export default function Home() {
   return (
     <main className="relative bg-[#080810] min-h-screen">
