@@ -5,6 +5,7 @@ import {
   Github, Linkedin, Mail, ArrowUpRight,
   Instagram, Twitter, MessageCircle, Facebook,
 } from 'lucide-react'
+import ContactForm from '@/components/ui/ContactForm'
 
 const SOCIALS = [
   {
@@ -104,24 +105,9 @@ export default function Footer() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: false }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex flex-col sm:flex-row lg:flex-col gap-4 flex-shrink-0"
+              className="w-full lg:w-1/2 flex-shrink-0"
             >
-              <a
-                href="mailto:prakash.om.global@gmail.com"
-                className="group inline-flex items-center gap-3 bg-[#00e5ff] text-[#080810] px-8 py-4 rounded-full font-black label hover:bg-white transition-all duration-300"
-              >
-                Send an Email
-                <ArrowUpRight size={18} className="group-hover:rotate-45 transition-transform" />
-              </a>
-              <a
-                href="https://linkedin.com/in/om-prakash-kr/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 border border-white/10 text-white px-8 py-4 rounded-full font-black label hover:border-[#8b5cf6]/60 hover:text-[#8b5cf6] transition-all duration-300"
-              >
-                View LinkedIn
-                <ArrowUpRight size={18} className="group-hover:rotate-45 transition-transform" />
-              </a>
+              <ContactForm />
             </motion.div>
           </div>
         </div>
