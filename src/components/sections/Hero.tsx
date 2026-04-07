@@ -55,22 +55,25 @@ export default function Hero() {
         <motion.div variants={ctn} initial="hidden" animate="show" className="flex-1 min-w-0">
 
           <motion.span variants={item} className="label text-[#00e5ff] mb-6 block">
-            Automation Engineer &bull; Python&nbsp;&bull;&nbsp;Data&nbsp;&bull;&nbsp;Web
+            Python Backend Developer &bull; AI&nbsp;&bull;&nbsp;FastAPI&nbsp;&bull;&nbsp;Data Engineering
           </motion.span>
 
-          <motion.h1 variants={item} className="heading-xl text-white mb-8 leading-none">
-            ENGINEERING<br />
-            <span className="text-gradient">RELIABLE</span><br />
-            SYSTEMS
+          <motion.h1 
+            variants={item} 
+            className="text-4xl md:text-5xl lg:text-[4.5rem] font-black tracking-tighter text-white mb-8 leading-tight"
+          >
+            BUILDING INTELLIGENT SYSTEMS<br />
+            <span className="text-gradient">SCALABLE BACKENDS</span><br />
+            REAL-WORLD AUTOMATION
           </motion.h1>
 
           <motion.p variants={item} className="body-lg text-gray-400 max-w-lg mb-5 leading-relaxed">
-            I build automation systems that eliminate manual work, speed up workflows,
-            and scale reliably — through clean code, APIs, and data engineering.
+            I build AI-powered applications, backend APIs, and automation systems that solve real problems.
+            Focused on Python, FastAPI, REST APIs, and data processing — developing scalable SaaS products and intelligent workflows.
           </motion.p>
 
           <motion.div variants={item} className="flex flex-wrap gap-2 mb-12">
-            {['Bill.com', 'RetailBackbone', 'GeeksforGeeks'].map(tag => (
+            {['Python', 'FastAPI', 'AI'].map(tag => (
               <span
                 key={tag}
                 className="px-4 py-1.5 rounded-full border border-[#00e5ff]/30 bg-[#00e5ff]/5 text-[#00e5ff] text-xs font-bold tracking-wide"
@@ -88,10 +91,18 @@ export default function Hero() {
               View Projects
             </a>
             <a
+              href="https://github.com/om-prakash16"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/10 bg-white/5 text-white label hover:bg-white/10 transition-all duration-300"
+            >
+              GitHub
+            </a>
+            <a
               href="#contact"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/10 bg-white/5 text-white label hover:bg-white/10 transition-all duration-300"
             >
-              Let&apos;s Connect
+              Contact
             </a>
           </motion.div>
         </motion.div>
@@ -117,7 +128,7 @@ export default function Hero() {
               <div className="absolute bottom-0 left-0 right-0 p-8">
                 <p className="text-2xl font-black tracking-tight text-white mb-1">OM PRAKASH</p>
                 <div className="h-[2px] w-10 bg-[#00e5ff] mb-3 rounded-full" />
-                <p className="label text-gray-400">Automation Engineer &amp; Python Dev</p>
+                <p className="label text-gray-400">Python Backend Developer</p>
               </div>
             </div>
           </div>

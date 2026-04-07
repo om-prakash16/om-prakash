@@ -3,22 +3,29 @@
 import { motion } from 'framer-motion'
 
 const SKILLS = [
-  { name: 'Python', pct: 80, color: '#00e5ff', category: 'core' },
-  { name: 'Python Automation', pct: 72, color: '#00e5ff', category: 'core' },
-  { name: 'Data Processing (Pandas / NumPy)', pct: 68, color: '#3b82f6', category: 'core' },
-  { name: 'API Integration (REST / JSON / XML)', pct: 65, color: '#8b5cf6', category: 'core' },
-  { name: 'HTML & CSS', pct: 85, color: '#f59e0b', category: 'web' },
-  { name: 'Web Development', pct: 75, color: '#f59e0b', category: 'web' },
-  { name: 'Tailwind CSS', pct: 78, color: '#06b6d4', category: 'web' },
-  { name: 'Bootstrap', pct: 80, color: '#7c3aed', category: 'web' },
-  { name: 'Bill.com / RetailBackbone (SaaS)', pct: 90, color: '#10b981', category: 'tools' },
-  { name: 'Microsoft Excel', pct: 88, color: '#10b981', category: 'tools' },
+  { name: 'Python', pct: 90, color: '#00e5ff', category: 'ai' },
+  { name: 'Data Processing (Pandas, NumPy)', pct: 85, color: '#00e5ff', category: 'ai' },
+  { name: 'Automation Scripts', pct: 80, color: '#3b82f6', category: 'ai' },
+  { name: 'Prompt Engineering', pct: 75, color: '#8b5cf6', category: 'ai' },
+  { name: 'API Data Handling', pct: 85, color: '#7c3aed', category: 'ai' },
+
+  { name: 'FastAPI', pct: 85, color: '#10b981', category: 'backend' },
+  { name: 'REST APIs', pct: 90, color: '#10b981', category: 'backend' },
+  { name: 'JSON/XML Processing', pct: 85, color: '#047857', category: 'backend' },
+  { name: 'Backend Logic', pct: 80, color: '#059669', category: 'backend' },
+  { name: 'Data Validation', pct: 85, color: '#34d399', category: 'backend' },
+
+  { name: 'Git', pct: 85, color: '#f59e0b', category: 'tools' },
+  { name: 'GitHub', pct: 90, color: '#f59e0b', category: 'tools' },
+  { name: 'Linux', pct: 75, color: '#d97706', category: 'tools' },
+  { name: 'VS Code', pct: 95, color: '#b45309', category: 'tools' },
+  { name: 'Excel Automation', pct: 85, color: '#ea580c', category: 'tools' },
 ]
 
 const CATEGORIES = [
-  { key: 'core', label: 'Python & Data' },
-  { key: 'web', label: 'Web Development' },
-  { key: 'tools', label: 'Tools & SaaS' },
+  { key: 'ai', label: 'Python & AI' },
+  { key: 'backend', label: 'Backend Development' },
+  { key: 'tools', label: 'Tools & Technologies' },
 ]
 
 function Bar({ name, pct, color, delay }: { name: string; pct: number; color: string; delay: number }) {
@@ -67,7 +74,7 @@ export default function Skills() {
               SKILLS &amp;<br /><span className="text-gray-300">STACK</span>
             </h2>
             <p className="body-lg text-gray-500 max-w-md">
-              Python scripting, web development, and SaaS tools — practical, production-level skills.
+              Python backend logic, REST APIs, and data engineering — scalable, production-level skills.
             </p>
           </div>
         </motion.div>

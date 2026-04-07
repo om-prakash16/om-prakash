@@ -96,7 +96,7 @@ export default function Footer() {
                 </span>
               </h2>
               <p className="body-lg text-gray-400 max-w-md">
-                Open to Python projects, web development work, technical writing, and operations collaborations.
+                Open to opportunities in Python Backend Development, AI Engineering, FastAPI Development, API Development, and SaaS Projects.
               </p>
             </motion.div>
 
@@ -195,7 +195,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <p className="text-white font-black text-base mb-1 tracking-tight">Om Prakash Kumar</p>
-            <p className="label text-gray-600">Process Associate · Python Dev · Technical Writer</p>
+            <p className="label text-gray-600">Python Developer | AI Projects | FastAPI | Backend APIs | Open to Work</p>
           </div>
 
           {/* Nav links */}

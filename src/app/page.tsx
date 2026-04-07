@@ -3,7 +3,6 @@ import About from '@/components/sections/About'
 import Experience from '@/components/sections/Experience'
 import Skills from '@/components/sections/Skills'
 import Projects from '@/components/sections/Projects'
-import Process from '@/components/sections/Process'
 import Showcase from '@/components/sections/Showcase'
 import Navbar from '@/components/ui/Navbar'
 import Footer from '@/components/sections/Footer'
@@ -20,8 +19,6 @@ export default function Home() {
       <Experience />
       <Skills />
       <Projects />
-      <Process />
-      <Showcase />
       <Footer />
     </main>
   )

@@ -8,11 +8,10 @@ const NAV_LINKS = [
   { name: 'Experience', href: '#experience' },
   { name: 'Skills', href: '#skills' },
   { name: 'Work', href: '#work' },
-  { name: 'Process', href: '#process' },
   { name: 'Contact', href: '#contact' },
 ]
 
-const SECTION_IDS = ['about', 'experience', 'skills', 'work', 'process', 'contact']
+const SECTION_IDS = ['about', 'experience', 'skills', 'work', 'contact']
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)

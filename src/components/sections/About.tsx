@@ -50,20 +50,18 @@ export default function About() {
             className="flex flex-col justify-end gap-5"
           >
             <p className="text-2xl font-bold leading-snug text-[#080810] tracking-tight">
-              I&apos;m a{' '}
-              <span className="text-[#8b5cf6]">Python Developer</span> &amp;{' '}
-              <span className="text-[#00e5ff]">Automation Engineer</span>{' '}
-              turning complex systems into reliable, efficient workflows.
+              I am a{' '}
+              <span className="text-[#8b5cf6]">Python Backend Developer</span> focused on building{' '}
+              <span className="text-[#00e5ff]">AI-powered systems</span>, automation tools, and scalable APIs.
             </p>
             <p className="body-lg text-gray-500 max-w-xl">
-              Currently working on{' '}
-              <span className="font-bold text-[#080810]">Bill.com</span> (billing automation &amp; data pipelines) and{' '}
-              <span className="font-bold text-[#080810]">RetailBackbone.com</span> (data handling &amp; backend operations).
-              Strong foundation in Python, Pandas, NumPy, REST APIs, Linux scripting, and web development.
+              My work combines Python, FastAPI, data processing, and REST API integration to create reliable backend systems. I enjoy transforming complex workflows into efficient software solutions.
             </p>
             <p className="body-lg text-gray-500 max-w-xl">
-              Also a technical writer at{' '}
-              <span className="font-bold text-[#080810]">GeeksforGeeks</span> — simplifying complex engineering concepts into practical knowledge.
+              Currently working as a Process Associate at SunTec, where I handle structured datasets and optimize workflows. Alongside this, I build AI and SaaS-based projects including SkillProof AI — a platform that evaluates technical skills using intelligent project analysis.
+            </p>
+            <p className="body-lg text-gray-500 max-w-xl mt-4">
+              I also contribute technical content on GeeksforGeeks, simplifying Python, automation, and software engineering concepts.
             </p>
           </motion.div>
         </div>
