@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Briefcase, PenTool } from 'lucide-react'
 
 const EXPERIENCES = [
   {
@@ -23,14 +24,70 @@ const EXPERIENCES = [
   },
 ]
 
+const ROLE_ICONS: Record<string, React.ElementType> = {
+  'Process Associate': Briefcase,
+  'Technical Writer': PenTool,
+}
+
+const cardVariants = {
+  hidden: { opacity: 0, x: -60, filter: 'blur(8px)' },
+  visible: (i: number) => ({
+    opacity: 1,
+    x: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.9,
+      delay: i * 0.2,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  }),
+}
+
+const dotVariants = {
+  hidden: { scale: 0, opacity: 0 },
+  visible: (i: number) => ({
+    scale: 1,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      delay: i * 0.2 + 0.1,
+      ease: [0.34, 1.56, 0.64, 1],
+    },
+  }),
+}
+
+const lineVariants = {
+  hidden: { scaleY: 0 },
+  visible: {
+    scaleY: 1,
+    transition: {
+      duration: 1.2,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+}
+
 export default function Experience() {
   return (
     <section
       id="experience"
-      className="w-full min-h-screen bg-[#080810]"
+      className="w-full min-h-screen bg-[#060611] relative overflow-hidden"
     >
-      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 py-24 lg:py-32">
+      {/* Ambient background glow */}
+      <div
+        className="pointer-events-none absolute top-1/4 -left-40 w-[500px] h-[500px] rounded-full opacity-[0.04]"
+        style={{
+          background: 'radial-gradient(circle, #00e5ff 0%, transparent 70%)',
+        }}
+      />
+      <div
+        className="pointer-events-none absolute bottom-1/4 -right-40 w-[500px] h-[500px] rounded-full opacity-[0.04]"
+        style={{
+          background: 'radial-gradient(circle, #8b5cf6 0%, transparent 70%)',
+        }}
+      />
 
+      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 py-24 lg:py-32 relative">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -41,64 +98,168 @@ export default function Experience() {
         >
           <span className="label text-[#00e5ff] block mb-5">Career</span>
           <h2 className="heading-xl text-white leading-none">
-            EXPERIENCE<br /><span className="text-gray-600">&amp; WORK</span>
+            EXPERIENCE<br />
+            <span className="text-gray-700">&amp; WORK</span>
           </h2>
         </motion.div>
 
         {/* Timeline */}
         <div className="relative">
-          <div className="absolute left-[1px] top-0 bottom-0 w-px bg-white/8" />
+          {/* Animated gradient timeline line */}
+          <motion.div
+            variants={lineVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false }}
+            className="absolute left-[15px] md:left-[19px] top-0 bottom-0 w-[2px] origin-top"
+            style={{
+              background: 'linear-gradient(to bottom, #00e5ff, #8b5cf6)',
+            }}
+          />
 
-          <div className="flex flex-col gap-16 lg:gap-20">
-            {EXPERIENCES.map((exp, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false }}
-                transition={{ duration: 0.8, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                className="relative pl-10 md:pl-16"
-              >
-                {/* Dot */}
-                <div
-                  className="absolute left-0 top-1.5 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-[#080810]"
-                  style={{ background: exp.color, boxShadow: `0 0 16px ${exp.color}80` }}
-                />
+          <div className="flex flex-col gap-12 lg:gap-16">
+            {EXPERIENCES.map((exp, i) => {
+              const Icon = ROLE_ICONS[exp.role] || Briefcase
 
-                {/* Year + Status */}
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="label" style={{ color: exp.color }}>{exp.year}</span>
-                  {exp.status === 'active' && (
-                    <span className="px-2.5 py-0.5 rounded-full bg-[#10b981]/10 border border-[#10b981]/30 text-[#10b981] label" style={{ fontSize: '0.58rem' }}>
-                      ● CURRENT
-                    </span>
-                  )}
-                </div>
-
-                {/* Role + Company */}
-                <h3 className="heading-md text-white mb-1">{exp.role}</h3>
-                <p className="text-lg font-semibold mb-5" style={{ color: exp.color }}>@ {exp.company}</p>
-
-                {/* Description */}
-                <p className="body-lg text-gray-400 max-w-2xl mb-6">{exp.desc}</p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2">
-                  {exp.tags.map(tag => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 rounded-full border border-white/8 bg-white/4 text-gray-400 text-xs font-semibold tracking-wide"
+              return (
+                <motion.div
+                  key={i}
+                  custom={i}
+                  variants={cardVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, margin: '-50px' }}
+                  className="relative pl-14 md:pl-20"
+                >
+                  {/* Timeline dot */}
+                  <motion.div
+                    custom={i}
+                    variants={dotVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false }}
+                    className="absolute left-0 top-8 md:top-10 z-10"
+                  >
+                    {/* Pulse ring for active */}
+                    {exp.status === 'active' && (
+                      <div
+                        className="absolute inset-0 -m-2 rounded-full animate-pulse-ring"
+                        style={{
+                          background: `${exp.color}30`,
+                          border: `1px solid ${exp.color}50`,
+                        }}
+                      />
+                    )}
+                    {/* Dot with icon */}
+                    <div
+                      className="relative w-[30px] h-[30px] md:w-[38px] md:h-[38px] rounded-full flex items-center justify-center"
+                      style={{
+                        background: `${exp.color}20`,
+                        border: `2px solid ${exp.color}`,
+                        boxShadow: `0 0 20px ${exp.color}40, 0 0 40px ${exp.color}15`,
+                      }}
                     >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                      <Icon
+                        size={14}
+                        className="md:w-[18px] md:h-[18px]"
+                        style={{ color: exp.color }}
+                      />
+                    </div>
+                  </motion.div>
 
-                {i < EXPERIENCES.length - 1 && (
-                  <div className="mt-14 h-px w-full bg-white/5" />
-                )}
-              </motion.div>
-            ))}
+                  {/* Glassmorphism Card */}
+                  <div
+                    className="glass-card p-6 md:p-8 lg:p-10 relative group transition-all duration-500 hover:bg-white/[0.06] hover:border-white/[0.12]"
+                    style={{
+                      borderLeft: `3px solid ${exp.color}`,
+                    }}
+                  >
+                    {/* Subtle card glow on hover */}
+                    <div
+                      className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                      style={{
+                        background: `radial-gradient(ellipse at top left, ${exp.color}08, transparent 60%)`,
+                      }}
+                    />
+
+                    <div className="relative z-[1]">
+                      {/* Year + Status */}
+                      <div className="flex items-center gap-3 mb-4 flex-wrap">
+                        <span
+                          className="label tracking-wider text-xs"
+                          style={{ color: exp.color }}
+                        >
+                          {exp.year}
+                        </span>
+                        {exp.status === 'active' && (
+                          <span
+                            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[0.6rem] font-bold tracking-widest uppercase"
+                            style={{
+                              background: 'rgba(16, 185, 129, 0.1)',
+                              border: '1px solid rgba(16, 185, 129, 0.3)',
+                              color: '#10b981',
+                              boxShadow: '0 0 12px rgba(16, 185, 129, 0.15)',
+                            }}
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse" />
+                            CURRENT
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Role */}
+                      <h3 className="heading-md text-white mb-1 flex items-center gap-3">
+                        {exp.role}
+                      </h3>
+
+                      {/* Company */}
+                      <p
+                        className="text-lg font-semibold mb-5 flex items-center gap-2"
+                        style={{ color: exp.color }}
+                      >
+                        @ {exp.company}
+                      </p>
+
+                      {/* Description */}
+                      <p className="body-lg text-gray-400 max-w-2xl mb-6 leading-relaxed">
+                        {exp.desc}
+                      </p>
+
+                      {/* Tags */}
+                      <div className="flex flex-wrap gap-2">
+                        {exp.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 cursor-default"
+                            style={{
+                              background: `${exp.color}08`,
+                              border: `1px solid ${exp.color}30`,
+                              color: `${exp.color}cc`,
+                            }}
+                            onMouseEnter={(e) => {
+                              const el = e.currentTarget
+                              el.style.background = `${exp.color}18`
+                              el.style.borderColor = `${exp.color}60`
+                              el.style.boxShadow = `0 0 12px ${exp.color}20`
+                              el.style.color = exp.color
+                            }}
+                            onMouseLeave={(e) => {
+                              const el = e.currentTarget
+                              el.style.background = `${exp.color}08`
+                              el.style.borderColor = `${exp.color}30`
+                              el.style.boxShadow = 'none'
+                              el.style.color = `${exp.color}cc`
+                            }}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              )
+            })}
           </div>
         </div>
       </div>

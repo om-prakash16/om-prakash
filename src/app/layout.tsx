@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { AnimatePresence } from "framer-motion";
 import SmoothScroll from "@/components/ui/SmoothScroll";
+import CustomCursor from "@/components/ui/CustomCursor";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -16,11 +17,11 @@ const BASE_URL = "https://ommee.in";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Om Prakash Kumar — Python Developer & Technical Writer",
+    default: "Om Prakash Kumar — UI/UX Designer & Python Developer",
     template: "%s | Om Prakash Kumar",
   },
   description:
-    "Om Prakash Kumar — Python developer, technical writer, and web developer. Skilled in Python automation, data processing (Pandas/NumPy), HTML/CSS, Tailwind, REST APIs, and SaaS tools like Bill.com. Currently working as Process Associate at SuntecIndia. Published at GeeksforGeeks.",
+    "Om Prakash Kumar — Frontend UI/UX Designer, Python developer, and technical writer. Skilled in React, Next.js, Framer Motion, Python automation, REST APIs, and data processing.",
   keywords: [
     "Om Prakash Kumar",
     "Python Developer",
@@ -97,7 +98,7 @@ export default function RootLayout({
         <link rel="me" href="https://github.com/om-prakash16" />
         {/* Preconnect for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <meta name="theme-color" content="#080810" />
+        <meta name="theme-color" content="#060611" />
         <meta name="color-scheme" content="dark" />
         {/* Structured Data */}
         <script
@@ -135,8 +136,10 @@ export default function RootLayout({
       </head>
       <body
         className={`${inter.variable} antialiased overflow-x-hidden`}
-        style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}
+        style={{ fontFamily: "var(--font-inter), system-ui, sans-serif", cursor: "none" }}
       >
+        <div className="noise-overlay" />
+        <CustomCursor />
         <SmoothScroll>
           <AnimatePresence mode="wait">{children}</AnimatePresence>
         </SmoothScroll>
